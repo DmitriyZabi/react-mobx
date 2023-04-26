@@ -2,10 +2,10 @@ import { v4 as uuidv4 } from 'uuid'
 
 export interface IToDoStore {
   toDoList: IToDo[]
-  toDo: IToDo[]
-  toDoActive: IToDo[]
-  toDoCompleted: IToDo[]
-  toDoDeleted: IToDo[]
+  toDoAllList: IToDo[]
+  toDoActiveList: IToDo[]
+  toDoCompletedList: IToDo[]
+  toDoDeletedList: IToDo[]
   addToDo(toDo: IToDo): void
   toActiveToDo(toDo: IToDo): void
   completeToDo(toDo: IToDo): void
@@ -34,29 +34,29 @@ export interface IToDo {
 
 export const toDoStore = () => ({
   toDoList: [] as IToDo[],
-  get toDo() {
+  get toDoAllList() {
     return this.toDoList
   },
-  get toDoActive() {
+  get toDoActiveList() {
     return this.toDoList.filter((x) => x.status === ToDoStatus.Active)
   },
-  get toDoCompleted() {
+  get toDoCompletedList() {
     return this.toDoList.filter((x) => x.status === ToDoStatus.Completed)
   },
-  get toDoDeleted() {
+  get toDoDeletedList() {
     return this.toDoList.filter((x) => x.status === ToDoStatus.Deleted)
   },
   get totalToDo() {
-    return this.toDo.length
+    return this.toDoAllList.length
   },
   get totalToDoActive() {
-    return this.toDoActive.length
+    return this.toDoActiveList.length
   },
   get totalToDoCompleted() {
-    return this.toDoCompleted.length
+    return this.toDoCompletedList.length
   },
   get totalToDoDeleted() {
-    return this.toDoDeleted.length
+    return this.toDoDeletedList.length
   },
   addToDo(toDo: IToDo) {
     toDo.id = uuidv4()

@@ -8,7 +8,7 @@ export const ToDoList = observer(() => {
     <div className="d-flex gap-4 mt-4">
       <div className="d-flex flex-column gap-2 col-4">
         <h3>Active</h3>
-        {store.toDoActive.map((toDo) => (
+        {store.toDoActiveList.map((toDo) => (
           <div className="card" key={toDo.id}>
             <div className="card-body d-flex justify-content-between align-items-center gap-2">
               <h5 className="card-title mb-0">{toDo.name}</h5>
@@ -32,7 +32,7 @@ export const ToDoList = observer(() => {
       </div>
       <div className="d-flex flex-column gap-2 col-4">
         <h3>Completed</h3>
-        {store.toDoCompleted.map((toDo) => (
+        {store.toDoCompletedList.map((toDo) => (
           <div className="card" key={toDo.id}>
             <div className="card-body d-flex justify-content-between align-items-center gap-2">
               <h5 className="card-title mb-0">{toDo.name}</h5>
@@ -56,7 +56,7 @@ export const ToDoList = observer(() => {
       </div>
       <div className="d-flex flex-column gap-2 col-4">
         <h3>Deleted</h3>
-        {store.toDoDeleted.map((toDo) => (
+        {store.toDoDeletedList.map((toDo) => (
           <div className="card" key={toDo.id}>
             <div className="card-body d-flex justify-content-between align-items-center gap-2">
               <h5 className="card-title mb-0">{toDo.name}</h5>
@@ -69,7 +69,7 @@ export const ToDoList = observer(() => {
                 </button>
                 <button
                   className="btn btn-success"
-                  onClick={() => store.toActiveToDo(toDo)}
+                  onClick={() => store.completeToDo(toDo)}
                 >
                   Completed
                 </button>
